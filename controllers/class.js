@@ -116,6 +116,6 @@ exports.ShowStudents= async (req,res)=>{
 
   await cl.populate("students").execPopulate();
 
-  return res.status(200).json(cl);
+  return res.status(200).json(cl.students);
 
 }

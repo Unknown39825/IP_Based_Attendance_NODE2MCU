@@ -15,5 +15,3 @@ router.get("/one/:classId", getClassbyId);
 router.put("/addstudent/:classId", addStudent);
 router.get("/students/:classId", ShowStudents);
 module.exports = router;
-
-//TODO forgot passowrd api to be added

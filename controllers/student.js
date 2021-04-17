@@ -1,5 +1,6 @@
 const Student = require("../models/student");
 var MAC_ADDRESS = require("is-mac-address");
+const student = require("../models/student");
 // create student
 exports.create = async (req, res) => {
 
@@ -84,6 +85,12 @@ exports.getstudentbyRoll = async(req,res)=>{
       student = await Student.findOne({
         rollno: req.params.studentRoll
       });
+      if(!student)
+      {
+        return res.status(400).json({
+          error:"student not found"
+        })
+      }
     //   console.log(student);
     } catch (error) {
       if (error) {
@@ -98,6 +105,10 @@ exports.getstudentbyRoll = async(req,res)=>{
 
 // attendence marker
 exports.markAttendance = async(req,res)=>{
+
+     if (req.params.secret !== process.env.secretKey) {
+       return res.status(400).json({ error: "access denied" });
+     }
 
     let student;
     try {
@@ -116,5 +127,35 @@ exports.markAttendance = async(req,res)=>{
     }
     await student.save();
     res.status(200).json(student);
+
+}
+
+exports.resetStudents = async(req,res)=>{
+
+    if(req.params.secret!== process.env.secretKey)
+    {
+      return res.status(400).json({error:"access denied"});
+    }
+
+    let students;
+    try {
+        students= await Student.find({});
+        
+    } catch (error) {
+        if(error)
+        {
+            return res.status(400).json(error);
+        }
+        
+    }
+    students.forEach(async (student)=>{
+      await student.update({
+        $set:{
+          cnt:0
+        }
+      });
+      await student.save();
+    })
+    res.status(200).json(students);
 
 }
