@@ -111,6 +111,7 @@ exports.markAttendance = async(req,res)=>{
 
      if (req.params.secret !== process.env.secretKey) {
        return res.status(400).json({ error: "access denied" });
+       
      }
 
     let student;
@@ -120,6 +121,7 @@ exports.markAttendance = async(req,res)=>{
                 cnt:1
             }
         })
+        console.log(student);
         
     } catch (error) {
         if(error)
@@ -129,7 +131,7 @@ exports.markAttendance = async(req,res)=>{
         }
         
     }
-    await student.save();
+    
     res.status(200).json(student);
 
 }
