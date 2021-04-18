@@ -58,7 +58,7 @@ exports.getClassbyId = async (req, res) => {
       });
     }
   }
-  res.status(200).json({ cl });
+  res.status(200).json( cl );
 };
 
 // add student to class;
@@ -68,7 +68,12 @@ exports.addStudent = async (req, res) => {
   let cl;
   try {
     cl = await Class.findById(req.params.classId);
-    //   console.log(Class);
+    if(!cl)
+    {
+      return res.status(400).json({
+        error:"class not found"
+      })
+    }
   } catch (error) {
     if (error) {
       return res.status(500).json({

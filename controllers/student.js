@@ -3,6 +3,7 @@ var MAC_ADDRESS = require("is-mac-address");
 const student = require("../models/student");
 // create student
 exports.create = async (req, res) => {
+  console.log(req.body);
 
     if(!req.body.rollno||!req.body.macaddress)
     {
@@ -15,6 +16,7 @@ exports.create = async (req, res) => {
     if(!MAC_ADDRESS.isMACAddress(req.body.macaddress))
     {
         return res.status(404).json("invalid mac address");
+        
     }
   const newStudent = new Student({
     firstname:req.body.firstname,
@@ -27,6 +29,7 @@ exports.create = async (req, res) => {
   try {
     await newStudent.save();
   } catch (error) {
+    
     if (error) return res.status(400).json(error);
   }
   res.json({
@@ -121,6 +124,7 @@ exports.markAttendance = async(req,res)=>{
     } catch (error) {
         if(error)
         {
+          
             return res.status(400).json(error);
         }
         
