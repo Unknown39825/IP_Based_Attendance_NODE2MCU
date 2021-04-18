@@ -4,7 +4,8 @@
   "description": "attendance monitor using node mcu",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index.js"
+    "test": "nodemon index.js",
+    "start":"node index.js"
   },
   "repository": {
     "type": "git",
