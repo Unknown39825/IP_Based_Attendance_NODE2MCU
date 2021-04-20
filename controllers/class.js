@@ -89,15 +89,21 @@ exports.addStudent = async (req, res) => {
       error:"student not found"
     })
   }
-  await cl.update({
-    $push:{
-      students:{
-        _id:st._id
-      }
-    }
+  try {
+    await cl.update({
+      $addToSet: {
+        students: {
+          _id: st._id,
+        },
+      },
+    });
+    await cl.save();
     
-  })
-  await cl.save();
+  } catch (error) {
+
+    return res.status(500).json({error});
+    
+  }
   return res.status(200).json(cl);
   
 };

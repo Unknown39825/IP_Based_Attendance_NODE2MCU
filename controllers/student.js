@@ -3,8 +3,7 @@ var MAC_ADDRESS = require("is-mac-address");
 const student = require("../models/student");
 // create student
 exports.create = async (req, res) => {
-  console.log(req.body);
-
+  
     if(!req.body.rollno||!req.body.macaddress)
     {
         return res.status(400).json({
@@ -121,7 +120,6 @@ exports.markAttendance = async(req,res)=>{
                 cnt:1
             }
         })
-        console.log(student);
         
     } catch (error) {
         if(error)
