@@ -1,0 +1,4 @@
+{
+    "BASE":"https://wifi-attendence.herokuapp.com",
+    "secret":"12345-67890-09876-54321"
+}
