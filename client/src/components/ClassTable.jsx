@@ -56,8 +56,8 @@ const ContributorTables = () => {
         <td>{ event.courseId}  </td> 
         <td>{ event.teacher}  </td> 
         <td>{ event.students.length}  </td> 
-        <td><Link to={{pathname:'/class/addstudent/'+event._id}}>            <Button>Add Student</Button>          </Link></td>
-        <td><Link to={{pathname:'/class/students/'+event._id}}>            <Button>View Attendence</Button>          </Link></td>
+        <td><Link to={{pathname:'/class/addstud/'+event._id}}>            <Button>Add Student</Button>          </Link></td>
+        <td><Link to={{pathname:'/class/stud/'+event._id}}>            <Button>View Attendence</Button>          </Link></td>
        
       </tr>)
       
