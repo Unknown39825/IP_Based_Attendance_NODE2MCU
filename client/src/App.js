@@ -17,8 +17,8 @@ function App() {
           
           <Route path="/student/register" component={CreateStudent} />
           <Route path="/class/register" component={CreateClass} />
-          <Route path="/class/addstudent/:id" component={addStudent} />
-          <Route path="/class/students/:id" component={ClassWiseStudent} />
+          <Route path="/class/addstud/:id" component={addStudent} />
+          <Route path="/class/stud/:id" component={ClassWiseStudent} />
          
           <Route path="/" component={admin} />
         </Switch>

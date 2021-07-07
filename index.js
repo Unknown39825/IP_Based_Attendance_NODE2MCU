@@ -33,8 +33,6 @@ mongoose.Promise = global.Promise;
 app.use("/student",studentRoutes);
 app.use("/class",classRoutes)
 
-
-
 const port = process.env.PORT || 8000;
 
 if (process.env.NODE_ENV === "production") {
